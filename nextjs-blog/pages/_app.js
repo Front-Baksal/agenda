@@ -1,4 +1,5 @@
 import '../styles/global.css';
+import { RecoilRoot } from 'recoil';
 
 /*
     In Next.js, you can add global CSS files by importing them from pages/_app.js. 
@@ -9,5 +10,9 @@ import '../styles/global.css';
 */
 
 export default function App({ Component, pageProps }) {
-    return <Component {...pageProps} />;
+    return (
+        <RecoilRoot>
+            <Component {...pageProps} />
+        </RecoilRoot>
+    );
 };
