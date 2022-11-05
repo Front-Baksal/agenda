@@ -1,0 +1,15 @@
+{
+  "extends": ["next/babel","next/core-web-vitals"]
+}
+
+/* Strict
+{
+  "extends": "next/core-web-vitals"
+}
+*/
+
+/* Base
+{
+  "extends": "next"
+}
+*/
