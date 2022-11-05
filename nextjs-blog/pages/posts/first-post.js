@@ -9,7 +9,7 @@ export default function FirstPost() {
       <Layout>
         <Head>
           <title>First Post</title>
-          <script src="https://connect.facebook.net/en_US/sdk.js" />
+          {/* <script src="https://connect.facebook.net/en_US/sdk.js" /> */}
           {/**
            * including scripts in this manner does not give a clear idea
            * of when it would load with respect to the other JavaScript code fetched on the same page.
