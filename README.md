@@ -104,7 +104,7 @@ export async function getServerSideProps(context) {
 ### getStaticProps
 
 - How-to-Statically-Generate-Pages-with-Dynamic-Routes
-- ![How-to-Statically-Generate-Pages-with-Dynamic-Routes](https://nextjs.org/static/images/learn/dynamic-routes/how-to-dynamic-routes.png)
+- <img alt="[How-to-Statically-Generate-Pages-with-Dynamic-Routes]" src="https://nextjs.org/static/images/learn/dynamic-routes/how-to-dynamic-routes.png" width="256px"/>
 
 ```javascript
 import Layout from '../../components/layout';
@@ -122,4 +122,13 @@ export async function getStaticProps({ params }) {
 }
 ```
 
-###
+### API Routes
+
+- `API Routes` let you create an API endpoint inside a Next.js app. You can do so by creating a function inside the pages/api directory that has the following format
+
+``` javascript
+// req = HTTP incoming message, res = HTTP server response
+export default function handler(req, res) {
+  // ...
+}
+```
