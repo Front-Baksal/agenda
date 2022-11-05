@@ -37,7 +37,7 @@ export default function Layout({ children, home }) {
             */}
             <Image
               priority 
-              src="/images/profile.jpg"
+              src="https://user-images.githubusercontent.com/12531340/200128975-c8bcc409-df9a-4014-a25e-4410b1b0c6b5.jpeg"
               className={utilStyles.borderCircle}
               height={144}
               width={144}
