@@ -1,7 +1,45 @@
 # agenda
 이의제                                    기
 
+---
 # Next.js
+
+## Environment
+
+### [next.config.js](https://nextjs.org/docs/api-reference/next.config.js/introduction)
+
+- For custom advanced configuration of Next.js
+    - you can create a next.config.js or next.config.mjs file
+    - in the root of your project directory (next to package.json).
+
+- next.config.js is a regular Node.js module, not a JSON file.
+    - It gets used by the Next.js server and build phases
+    - and it's not included in the browser build.
+
+``` javascript
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  /* config options here */
+}
+
+module.exports = nextConfig
+```
+
+### [ESLint in Next.js](https://nextjs.org/docs/basic-features/eslint)
+
+- add this code to `package.json`
+
+``` json
+"scripts" : {
+  "lint": "next lint"
+}
+```
+
+- and run `npm run lint` or `yarn lint`
+
+---
 
 ## Terms
 
@@ -11,7 +49,7 @@
     <!-- - > 기본적으로, Next.js는 모든 페이지를 pre-render 합니다. 이는 각 페이지를  -->
 
 - Each generated HTML is associated with minimal JavaScript code necessary for that page
-- When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called `hydration`.
+- When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called `hydration`.)
 
 ### Static Generation
 
@@ -62,3 +100,26 @@ export async function getServerSideProps(context) {
 - The team behind Next.js has created **a React hook for data fetching** called `SWR`. 
 - We highly recommend it if you’re fetching data on the client side. 
     - It handles `caching`, `revalidation`, `focus tracking`, `refetching on interval`, and more.
+
+### getStaticProps
+
+- How-to-Statically-Generate-Pages-with-Dynamic-Routes
+- ![How-to-Statically-Generate-Pages-with-Dynamic-Routes](https://nextjs.org/static/images/learn/dynamic-routes/how-to-dynamic-routes.png)
+
+```javascript
+import Layout from '../../components/layout';
+
+export default function Post() {
+  return <Layout>...</Layout>;
+}
+
+export async function getStaticPaths() {
+  // Return a list of possible value for id
+}
+
+export async function getStaticProps({ params }) {
+  // Fetch necessary data for the blog post using params.id
+}
+```
+
+###
