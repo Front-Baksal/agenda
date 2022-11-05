@@ -1,5 +1,9 @@
 {
-  "extends": ["next/babel","next/core-web-vitals"]
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "off"
+  }
+  // for recoil
 }
 
 /* Strict
