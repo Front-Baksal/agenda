@@ -1,0 +1,14 @@
+{
+  "/404": "pages/404.html",
+  "/_error": "pages/_error.js",
+  "/api/hello": "pages/api/hello.js",
+  "/_app": "pages/_app.js",
+  "/Intro": "pages/Intro.html",
+  "/posts/first-post": "pages/posts/first-post.html",
+  "/[id]/review": "pages/[id]/review.js",
+  "/posts/[...id]": "pages/posts/[...id].js",
+  "/About": "pages/About.html",
+  "/": "pages/index.js",
+  "/posts/[id]": "pages/posts/[id].js",
+  "/_document": "pages/_document.js"
+}
