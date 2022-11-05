@@ -4,6 +4,7 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { getSortedPostsData } from "../lib/posts";
+import Date from "../components/date";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { DongilAtom } from "../atom/atom";
@@ -32,7 +33,9 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
       <section className={utilStyles.headingMd}>
+        {/* Recoil */}
         <div>
           <h1>{value2.age}</h1>
           <input
@@ -49,25 +52,33 @@ export default function Home({ allPostsData }) {
             }}
           ></input>
         </div>
+
+        {/* About page */}
         <h1>
           Go to <Link href="/about">About</Link>
         </h1>
 
+        {/* Component */}
         <YourComponent></YourComponent>
+
+        {/* First Post */}
         <h1 className="title">
           Read <Link href="/posts/first-post">this page!</Link>
         </h1>
       </section>
+
+      <hr />
+
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
