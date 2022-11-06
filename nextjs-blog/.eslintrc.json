@@ -1,9 +1,22 @@
 {
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/core-web-vitals", "plugin:@next/next/recommended"],
   "rules": {
-    "react-hooks/rules-of-hooks": "off"
-  }
-  // for recoil
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off"
+  },
+
+  // @Option for "Parsing error: Cannot find module 'next/babel'"
+  // Install "https://www.npmjs.com/package/@babel/eslint-parser"
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "babelrc": false,
+      "configFile": false,
+      // your babel options
+      "presets": ["@babel/preset-env"]
+    }
+  },
 }
 
 /* Strict
