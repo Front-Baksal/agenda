@@ -4,7 +4,7 @@ export const DongilAtom = atom(
     {
         key: "Dongil",
         default: {
-            age: 23,
+            age: "23",
             props: "handsome"
         }
     }

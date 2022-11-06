@@ -5,10 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { getSortedPostsData } from "../lib/posts";
 import Date from "../components/date";
+import { GetStaticProps } from 'next';
+import Alert from "../components/alert";
+import styled from "styled-components";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { DongilAtom } from "../atom/atom";
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
+
+const HelloStyle = styled.div`
+  border: 1px dotted black;
+  margin-top: 50px;
+`;
+
+const StyleA = styled.div`
+  font-size: 32px;
+  color: blue;
+`;
 
 const YourComponent = () => {
   return (
@@ -21,12 +34,25 @@ const YourComponent = () => {
   );
 };
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }: {
+  allPostsData: {
+    date: string
+    title: string
+    id: string
+  }[]
+}) {
   /**
    * const _dongil = useRecoilValue(DongilAtom);
    * const [value, setValue] = useState(_dongil.age);
    */
   const [value2, setValue2] = useRecoilState(DongilAtom);
+  const myHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setValue2((prev) => prev = {
+      age: e.target.value,
+      props: "handsome"
+    });
+  }
 
   return (
     <Layout home>
@@ -40,18 +66,30 @@ export default function Home({ allPostsData }) {
           <h1>{value2.age}</h1>
           <input
             type="number"
-            onClick={(e) => {
-              e.preventDefault();
-              setValue2(
-                (prev) =>
-                  (prev = {
-                    age: e.target.value,
-                    props: "handsome",
-                  })
-              );
-            }}
+            onChange={myHandler}
           ></input>
         </div>
+        {/* Alert Component & Styled-Components*/}
+        <HelloStyle>
+          <h1>.module.css</h1>
+          <Alert
+            children="이런 식으로 *.module.css를 사용할 수 있습니다."
+            type="success"
+          />
+          <Alert
+            children={
+              <>
+                <div>
+                  이런 식으로 *.module.css를 사용할 수 있습니다
+                </div>
+                <StyleA>
+                  이런 식으로 styled-components를 사용할 수 있습니다.
+                </StyleA>
+              </>
+            }
+            type="error"
+          />
+        </HelloStyle>
 
         {/* About page */}
         <h1>
@@ -87,7 +125,7 @@ export default function Home({ allPostsData }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = () => {
   const allPostsData = getSortedPostsData();
   return {
     props: {

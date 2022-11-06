@@ -6,7 +6,7 @@
     If it's 'error', you want the text color to be red.
 */
 
-import styles from './alert.module.css';
+import styles from "../styles/alert.module.css";
 import cn from 'classnames';
 
 export default function Alert({ children, type }) {

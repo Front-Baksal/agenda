@@ -3,6 +3,7 @@ import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from "next/head";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
+import { GetStaticProps, GetStaticPaths } from 'next'
 
 /**
  * {Parsing error: Cannot find module 'next/babel'
@@ -11,18 +12,24 @@ import utilStyles from "../../styles/utils.module.css";
  *   - /Users/euije/Github/agenda/nextjs-blog/node_modules/next/dist/compiled/babel/eslint-parser.js
  *   - /Users/euije/Github/agenda/nextjs-blog/node_modules/eslint-config-next/parser.js
  *   - /Users/euije/Github/agenda/nextjs-blog/node_modules/@eslint/eslintrc/dist/eslintrc.cjs} param0 
- * -> .babelrc, .eslintrc.json
+ * -> .eslintrc.json
  */
 
 
-export default function Post({ postData }) {
+export default function Post({ postData }: {
+  postData: {
+    title: string
+    date: string
+    contentHtml: string
+  }
+}) {
   return (
     <Layout>
       <Head>
         <title>{postData.title}</title>
       </Head>
       <br />
-      {postData.id}
+      {/* {postData.id} */}
       <br />
       {/* {postData.date} */}
 
@@ -53,7 +60,7 @@ export default function Post({ postData }) {
 ]
  * @returns paths
  */
-export async function getStaticPaths() {
+export const getStaticPaths : GetStaticPaths = async () => {
   const paths = getAllPostIds();
   return {
     paths,
@@ -74,9 +81,9 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id);
-  return {
+export const getStaticProps : GetStaticProps = async ({ params }) => {
+  const postData = await getPostData(params?.id as string);
+  return {  
     props: {
       postData,
     }
