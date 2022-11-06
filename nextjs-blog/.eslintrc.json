@@ -16,7 +16,7 @@
       // your babel options
       "presets": ["@babel/preset-env"]
     }
-  },
+  }
 }
 
 /* Strict
