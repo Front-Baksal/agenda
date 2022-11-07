@@ -11,7 +11,7 @@ import Link from 'next/link';
 const name = '이의제';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }: { children: React.ReactNode, home?: boolean}) {
+export default function Layout({ children, home }: { children: React.ReactNode, home?: boolean }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -36,7 +36,7 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
                 https://nextjs.org/docs/api-reference/next/image#priority
             */}
             <Image
-              priority 
+              priority
               src="https://user-images.githubusercontent.com/12531340/200128975-c8bcc409-df9a-4014-a25e-4410b1b0c6b5.jpeg"
               className={utilStyles.borderCircle}
               height={144}
@@ -48,20 +48,18 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
         ) : (
           <>
             <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt=""
-                />
-              </a>
+              <Image
+                priority
+                src="/images/profile.jpg"
+                className={utilStyles.borderCircle}
+                height={108}
+                width={108}
+                alt=""
+              />
             </Link>
             <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+              <Link className={utilStyles.colorInherit} href="/">
+                {name}
               </Link>
             </h2>
           </>
@@ -71,7 +69,7 @@ export default function Layout({ children, home }: { children: React.ReactNode, 
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
-            <a>← Back to home</a>
+            ← Back to home
           </Link>
         </div>
       )}
