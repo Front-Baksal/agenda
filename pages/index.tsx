@@ -11,7 +11,6 @@ import styled from "styled-components";
 
 import { useRecoilState, useRecoilValue } from "recoil";
 import { DongilAtom } from "../atom/atom";
-import { useState, MouseEvent } from "react";
 
 const HelloStyle = styled.div`
   border: 1px dotted black;
@@ -69,6 +68,12 @@ export default function Home({ allPostsData }: {
             onChange={myHandler}
           ></input>
         </div>
+
+        {/* About page */}
+        <h1>
+          Go to <Link href="/introduce">introduce</Link>
+        </h1>
+
         {/* Alert Component & Styled-Components*/}
         <HelloStyle>
           <h1>.module.css</h1>
@@ -91,18 +96,26 @@ export default function Home({ allPostsData }: {
           />
         </HelloStyle>
 
-        {/* About page */}
-        <h1>
-          Go to <Link href="/about">About</Link>
-        </h1>
-
         {/* Component */}
+        <br />
         <YourComponent></YourComponent>
 
         {/* First Post */}
         <h1 className="title">
-          Read <Link href="/posts/first-post">this page!</Link>
+          Read <Link href="/posts/first-post">first-post!</Link>
         </h1>
+
+        {/* ServerSideProps */}
+        <h1 className="title">
+          Read <Link href="/fetching">fetching (server-side-props)!</Link>
+        </h1>
+
+        {/* Dynamic Routes */}
+        <h1 className="title">
+          Read <Link href="/pages/a/b/c">Dynamic Routes</Link>
+        </h1>
+
+
       </section>
 
       <hr />
