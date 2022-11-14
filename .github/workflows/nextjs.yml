@@ -80,6 +80,7 @@ jobs:
         with:
           message: "빌드에 실패하였습니다 \n |A|B|C|\n|-|-|-|\n|<img src="https://t1.daumcdn.net/cfile/tistory/12244945517486651D"/>|Y|X|"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reactions: "+1 | -1 | laugh"
 
       - name: Comment if completed
         if: ${{ success() }}
@@ -87,6 +88,7 @@ jobs:
         with:
           message: "빌드에 성공하였습니다 \n|A|B|C|\n|-|-|-|\n|<img src="https://img.etnews.com/news/article/2014/06/18/techholic_18080012860375.jpg" />|Y|X|"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reactions: "+1 | -1 | laugh"
 
   # Deployment job
   deploy:
@@ -106,3 +108,4 @@ jobs:
         with:
           message: "배포에 성공하였습니다"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reactions: "+1 | -1 | laugh"
