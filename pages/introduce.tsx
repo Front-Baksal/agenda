@@ -8,6 +8,7 @@ export default function Introduce({ data }) {
     <>
       <h1>About</h1>
       <h2>{_age.age}</h2>
+      <h1>Hi</h1>
     </>
   );
 }
