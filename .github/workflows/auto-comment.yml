@@ -1,10 +1,33 @@
-# Comment to a new issue.
-issuesOpened: >
-  Thank you for raising an issue. We will try and get back to you as soon as possible.
+on: pull_request
 
-  Please make sure you have given us as much context as possible.
+jobs:
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    name: An example job to comment a PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-pullRequestOpened: >
-  Thank you for raising your pull request.
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            Hello world ! :wave:
+            |a|B|c|
+            |-|-|-|
+            |<img src="https://avatars.githubusercontent.com/u/12531340?s=60&v=4"/>|크|킥|
+          reactions: eyes, rocket
 
-  Please make sure you have followed our contributing guidelines. We will review it as soon as possible.
+      - name: Comment PR 1
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            Hello world ! :wave:
+          pr_number: 10
+
+      - name: Comment PR 2
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            [Preview](http://ec2-15-165-196-61.ap-northeast-2.compute.amazonaws.com:3000/)
+          pr_number: 10
