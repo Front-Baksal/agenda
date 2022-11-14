@@ -1,46 +1,15 @@
-# Comment to a new issue.
-issuesOpened: >
-  Thank you for raising an issue. We will try and get back to you as soon as possible.
+on: pull_request
 
-  Please make sure you have given us as much context as possible.
+jobs:
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    name: An example job to comment a PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-pullRequestOpened: >
-  Thank you for raising your pull request.
-
-  Please make sure you have followed our contributing guidelines. We will review it as soon as possible.
-
-pullRequestClosed: >
-  닫힘
-
-pullRequestOpened: >
-  Message when pull requests are opened .
-
-pullRequestClosed: >
-	Message when be shown when the issue is closed
-
-pullRequestReviewRequested: >
-	Message when be shown when a reviewer has been requested
-
-pullRequestReviewRequestRemoved: >
-	Message when be shown when a reviewer request has been removed
-
-pullRequestLabeled: >
-	Message when pullRequest are labeled
-
-pullRequestUnlabeled: >
-	Message when pullRequest are unlabeled
-
-pullRequestEdited: >
-	Message when pullRequest are edited
-
-pullRequestClosed: >
-	Message when pullRequest are closed
-
-pullRequestReopened: >
-	Message when pullRequest are reopened
-
-pullRequestAssigned: >
-	Message when pullRequests are assigned
-
-pullRequestUnassigned : >
-  Message when pullRequests are unassigned
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            Hello world ! :wave:
