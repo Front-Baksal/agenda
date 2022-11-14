@@ -78,7 +78,7 @@ jobs:
         if: ${{ failure() }}
         uses: mb2dev/github-action-comment-pull-request@1.0.0
         with:
-          message: "빌드에 실패하였습니다 ![Fail](https://t1.daumcdn.net/cfile/tistory/12244945517486651D)"
+          message: "빌드에 실패하였습니다"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           reactions: "+1 | -1 | laugh"
 
