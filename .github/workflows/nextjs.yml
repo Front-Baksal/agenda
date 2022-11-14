@@ -80,6 +80,30 @@ jobs:
         with:
           path: ./out
 
+      - name: Comment if failed
+        if: ${{ failure() }}
+        # uses: ./.github/actions/slack-notify
+        uses: mb2dev/github-action-comment-pull-request@1.0.0
+        with:
+          message: "빌드에 실패하였습니다
+            |A|B|C|
+            |-|-|-|
+            |<img src="https://t1.daumcdn.net/cfile/tistory/12244945517486651D"/>|Y|X|"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # with:
+        #   slack_incoming_url: ${{ secrets.SLACK_INCOMING_URL }}
+
+      - name: Comment if completed
+        if: ${{ success() }}
+        # uses: ./.github/actions/slack-notify
+        uses: mb2dev/github-action-comment-pull-request@1.0.0
+        with:
+          message: "빌드에 성공하였습니다
+            |A|B|C|
+            |-|-|-|
+            |<img src="https://img.etnews.com/news/article/2014/06/18/techholic_18080012860375.jpg" />|Y|X|"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   # Deployment job
   deploy:
     environment:
@@ -91,3 +115,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
+      - name: Comment if completed deployment
+        if: ${{ success() }}
+        # uses: ./.github/actions/slack-notify
+        uses: mb2dev/github-action-comment-pull-request@1.0.0
+        with:
+          message: "배포에 성공하였습니다"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
