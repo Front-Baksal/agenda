@@ -6,12 +6,6 @@ export default function Custom404() {
             <h1>
                 404 - Page Not Found
             </h1>
-            <div>
-                PR test
-            </div>
-            <div>
-                PR Comment Test2
-            </div>
         </>
     );
 }
