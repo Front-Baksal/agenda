@@ -5,12 +5,7 @@
 name: Deploy Next.js site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   pull_request:
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -81,26 +76,16 @@ jobs:
 
       - name: Comment if failed
         if: ${{ failure() }}
-        # uses: ./.github/actions/slack-notify
         uses: mb2dev/github-action-comment-pull-request@1.0.0
         with:
-          message: "빌드에 실패하였습니다
-            |A|B|C|
-            |-|-|-|
-            |<img src="https://t1.daumcdn.net/cfile/tistory/12244945517486651D"/>|Y|X|"
+          message: "빌드에 실패하였습니다 \n |A|B|C|\n|-|-|-|\n|<img src="https://t1.daumcdn.net/cfile/tistory/12244945517486651D"/>|Y|X|"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # with:
-        #   slack_incoming_url: ${{ secrets.SLACK_INCOMING_URL }}
 
       - name: Comment if completed
         if: ${{ success() }}
-        # uses: ./.github/actions/slack-notify
         uses: mb2dev/github-action-comment-pull-request@1.0.0
         with:
-          message: "빌드에 성공하였습니다
-            |A|B|C|
-            |-|-|-|
-            |<img src="https://img.etnews.com/news/article/2014/06/18/techholic_18080012860375.jpg" />|Y|X|"
+          message: "빌드에 성공하였습니다 \n|A|B|C|\n|-|-|-|\n|<img src="https://img.etnews.com/news/article/2014/06/18/techholic_18080012860375.jpg" />|Y|X|"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Deployment job
@@ -117,7 +102,6 @@ jobs:
 
       - name: Comment if completed deployment
         if: ${{ success() }}
-        # uses: ./.github/actions/slack-notify
         uses: mb2dev/github-action-comment-pull-request@1.0.0
         with:
           message: "배포에 성공하였습니다"
