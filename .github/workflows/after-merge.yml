@@ -9,9 +9,12 @@ jobs:
     build:
       name: Comment a pull_request
       runs-on: ubuntu-latest
-        steps:
-          - name: Comment a pull_request
-            uses: mb2dev/github-action-comment-pull-request@1.0.0
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Comment a pull_request
+          uses: mb2dev/github-action-comment-pull-request@1.0.0
             with:
               message: "배포가 성공적으로 완료되었습니다"
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              reactions: "+1 | -1 | laugh"

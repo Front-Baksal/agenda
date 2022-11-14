@@ -12,6 +12,7 @@ const nextConfig = {
         hostname: "user-images.githubusercontent.com",
       },
     ],
+    unoptimized : true
   },
 };
 
