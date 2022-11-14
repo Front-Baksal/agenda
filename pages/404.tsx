@@ -9,6 +9,9 @@ export default function Custom404() {
             <div>
                 PR test
             </div>
+            <div>
+                PR Comment Test
+            </div>
         </>
     );
 }
