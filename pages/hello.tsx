@@ -1,4 +1,4 @@
-export const Hello = () => {
+const Hello = () => {
     return (
         <>
             <h1>
@@ -7,3 +7,5 @@ export const Hello = () => {
         </>
     );
 };
+
+export default Hello;

@@ -44,7 +44,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -78,7 +78,7 @@ jobs:
         if: ${{ failure() }}
         uses: mb2dev/github-action-comment-pull-request@1.0.0
         with:
-          message: "빌드에 실패하였습니다 \n |A|B|C|\n|-|-|-|\n|<img src="https://t1.daumcdn.net/cfile/tistory/12244945517486651D"/>|Y|X|"
+          message: "빌드에 실패하였습니다 ![Fail](https://t1.daumcdn.net/cfile/tistory/12244945517486651D)"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           reactions: "+1 | -1 | laugh"
 
@@ -86,7 +86,7 @@ jobs:
         if: ${{ success() }}
         uses: mb2dev/github-action-comment-pull-request@1.0.0
         with:
-          message: "빌드에 성공하였습니다 \n|A|B|C|\n|-|-|-|\n|<img src="https://img.etnews.com/news/article/2014/06/18/techholic_18080012860375.jpg" />|Y|X|"
+          message: "빌드에 성공하였습니다"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           reactions: "+1 | -1 | laugh"
 
@@ -107,5 +107,13 @@ jobs:
         uses: mb2dev/github-action-comment-pull-request@1.0.0
         with:
           message: "배포에 성공하였습니다"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          reactions: "+1 | -1 | laugh"
+
+      - name: Comment if fails
+        if: ${{ failure() }}
+        uses: mb2dev/github-action-comment-pull-request@1.0.0
+        with:
+          message: "배포에 실패하였습니다"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           reactions: "+1 | -1 | laugh"
